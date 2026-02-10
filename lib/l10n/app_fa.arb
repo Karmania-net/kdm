@@ -24,5 +24,17 @@
   "openFile": "باز کردن فایل",
   "invalidUrl": "لطفاً یک آدرس معتبر وارد کنید",
   "downloadsDirectory": "پوشه دانلودها",
-  "noDownloads": "هنوز دانلودی وجود ندارد"
+  "noDownloads": "هنوز دانلودی وجود ندارد",
+  "searchInDownloads": "جستجو در دانلودها...",
+  "newest": "جدیدترین",
+  "allFiles": "همه فایل‌ها",
+  "dragDropUrl": "آدرس یا فایل تورنت را اینجا بکشید و رها کنید",
+  "added": "اضافه شده",
+  "size": "حجم",
+  "name": "نام",
+  "status": "وضعیت",
+  "downloadSpeed": "دانلود",
+  "uploadSpeed": "آپلود",
+  "enterUrlOrTorrent": "آدرس را وارد کنید یا فایل تورنت را انتخاب کنید",
+  "todayAt": "امروز {time}"
 }

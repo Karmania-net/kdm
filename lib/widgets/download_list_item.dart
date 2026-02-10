@@ -97,9 +97,14 @@ class DownloadListItem extends StatelessWidget {
   }
 
   void _openFile(BuildContext context) {
-    final file = File(item.savePath);
+    openFile(item);
+  }
+
+  /// Opens the downloaded file with the system default app.
+  static void openFile(DownloadItem downloadItem) {
+    final file = File(downloadItem.savePath);
     if (file.existsSync()) {
-      OpenFile.open(item.savePath, type: 'file', linuxByProcess: true);
+      OpenFile.open(downloadItem.savePath, type: 'file', linuxByProcess: true);
     }
   }
 }

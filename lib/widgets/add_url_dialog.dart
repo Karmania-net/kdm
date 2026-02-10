@@ -22,22 +22,36 @@ class _AddUrlDialogState extends State<AddUrlDialog> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
-      title: Text(l10n.addUrl),
+      title: Text(l10n.addDownload),
       content: Form(
         key: _formKey,
-        child: TextFormField(
-          controller: _controller,
-          decoration: InputDecoration(
-            hintText: l10n.urlHint,
-            border: const OutlineInputBorder(),
-          ),
-          keyboardType: TextInputType.url,
-          validator: (value) {
-            if (value == null || value.trim().isEmpty) return l10n.invalidUrl;
-            final uri = Uri.tryParse(value.trim());
-            if (uri == null || !uri.hasScheme) return l10n.invalidUrl;
-            return null;
-          },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Text(
+                l10n.enterUrlOrTorrent,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+            TextFormField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: l10n.urlHint,
+                border: const OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.url,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty)
+                  return l10n.invalidUrl;
+                final uri = Uri.tryParse(value.trim());
+                if (uri == null || !uri.hasScheme) return l10n.invalidUrl;
+                return null;
+              },
+            ),
+          ],
         ),
       ),
       actions: [

@@ -26,6 +26,24 @@ class DownloadEngine {
   final Dio _dio = Dio();
   bool _cancelled = false;
   final List<CancelToken> _tokens = [];
+  int _lastSpeedBytes = 0;
+  DateTime? _lastSpeedTime;
+
+  void _updateSpeed() {
+    final now = DateTime.now();
+    if (_lastSpeedTime != null) {
+      final elapsed = now.difference(_lastSpeedTime!).inMilliseconds / 1000.0;
+      if (elapsed >= 0.3) {
+        item.speedBytesPerSecond =
+            ((item.bytesDone - _lastSpeedBytes) / elapsed).round();
+        _lastSpeedBytes = item.bytesDone;
+        _lastSpeedTime = now;
+      }
+    } else {
+      _lastSpeedTime = now;
+      _lastSpeedBytes = item.bytesDone;
+    }
+  }
 
   Future<void> start(List<DownloadItem> allItems) async {
     try {
@@ -75,6 +93,7 @@ class DownloadEngine {
           item.bytesTotal = total;
           item.progress = total > 0 ? received / total : 0.0;
           item.status = DownloadStatus.downloading;
+          _updateSpeed();
           onProgress(item);
         },
         options: Options(
@@ -83,6 +102,7 @@ class DownloadEngine {
         ),
       );
       if (_cancelled) return;
+      item.speedBytesPerSecond = null;
       item.status = DownloadStatus.completed;
       item.progress = 1.0;
       item.bytesDone = item.bytesTotal;
@@ -164,11 +184,13 @@ class DownloadEngine {
     final allDone = segments.every((s) => s.done);
     if (allDone) {
       await _mergePartFiles(segments.length);
+      item.speedBytesPerSecond = null;
       item.status = DownloadStatus.completed;
       item.progress = 1.0;
       item.bytesDone = total;
       onComplete(item);
     } else {
+      item.speedBytesPerSecond = null;
       item.status = DownloadStatus.paused;
       onComplete(item);
     }
@@ -230,6 +252,7 @@ class DownloadEngine {
         (sum, s) => s.done ? sum + (s.end - s.start + 1) : sum,
       );
       item.progress = total > 0 ? item.bytesDone / total : 0.0;
+      _updateSpeed();
       onProgress(item);
       await storage.saveDownloadList(allItems);
     } catch (e) {

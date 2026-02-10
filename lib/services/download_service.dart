@@ -14,6 +14,11 @@ class DownloadService extends ChangeNotifier {
 
   List<DownloadItem> get items => List.unmodifiable(_items);
 
+  /// Total download speed (bytes/s) across all active downloads.
+  int get totalDownloadSpeed => _items
+      .where((e) => e.status == DownloadStatus.downloading)
+      .fold<int>(0, (sum, e) => sum + (e.speedBytesPerSecond ?? 0));
+
   Future<void> ensureLoaded() async {
     if (_loaded) return;
     final list = await _storage.loadDownloadList();

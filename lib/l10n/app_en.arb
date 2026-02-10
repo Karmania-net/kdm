@@ -24,5 +24,24 @@
   "openFile": "Open file",
   "invalidUrl": "Please enter a valid URL",
   "downloadsDirectory": "Downloads",
-  "noDownloads": "No downloads yet"
+  "noDownloads": "No downloads yet",
+  "searchInDownloads": "Search in downloads...",
+  "newest": "Newest",
+  "allFiles": "All files",
+  "dragDropUrl": "Drag-and-drop URL or torrent file",
+  "added": "Added",
+  "size": "Size",
+  "name": "Name",
+  "status": "Status",
+  "downloadSpeed": "Download",
+  "uploadSpeed": "Upload",
+  "enterUrlOrTorrent": "Enter URL or choose torrent file",
+  "todayAt": "Today {time}",
+  "@todayAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  }
 }

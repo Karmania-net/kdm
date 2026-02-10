@@ -85,4 +85,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noDownloads => 'No downloads yet';
+
+  @override
+  String get searchInDownloads => 'Search in downloads...';
+
+  @override
+  String get newest => 'Newest';
+
+  @override
+  String get allFiles => 'All files';
+
+  @override
+  String get dragDropUrl => 'Drag-and-drop URL or torrent file';
+
+  @override
+  String get added => 'Added';
+
+  @override
+  String get size => 'Size';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get downloadSpeed => 'Download';
+
+  @override
+  String get uploadSpeed => 'Upload';
+
+  @override
+  String get enterUrlOrTorrent => 'Enter URL or choose torrent file';
+
+  @override
+  String todayAt(String time) {
+    return 'Today $time';
+  }
 }

@@ -29,6 +29,7 @@ class DownloadItem {
     required this.url,
     required this.savePath,
     required this.filename,
+    DateTime? createdAt,
     this.status = DownloadStatus.pending,
     this.progress = 0.0,
     this.bytesTotal = 0,
@@ -36,12 +37,14 @@ class DownloadItem {
     this.speedBytesPerSecond,
     this.errorMessage,
     List<SegmentState>? segments,
-  }) : segments = segments ?? [];
+  }) : createdAt = createdAt ?? DateTime.now(),
+       segments = segments ?? [];
 
   final String id;
   final String url;
   final String savePath;
   final String filename;
+  final DateTime createdAt;
   DownloadStatus status;
   double progress;
   int bytesTotal;
@@ -59,6 +62,7 @@ class DownloadItem {
     'url': url,
     'savePath': savePath,
     'filename': filename,
+    'createdAt': createdAt.toIso8601String(),
     'status': status.name,
     'progress': progress,
     'bytesTotal': bytesTotal,
@@ -69,11 +73,17 @@ class DownloadItem {
   };
 
   factory DownloadItem.fromJson(Map<String, dynamic> json) {
+    DateTime? createdAt;
+    try {
+      final s = json['createdAt'] as String?;
+      if (s != null) createdAt = DateTime.parse(s);
+    } catch (_) {}
     return DownloadItem(
       id: json['id'] as String,
       url: json['url'] as String,
       savePath: json['savePath'] as String,
       filename: json['filename'] as String? ?? '',
+      createdAt: createdAt,
       status: DownloadStatus.values.byName(
         (json['status'] as String?) ?? 'pending',
       ),

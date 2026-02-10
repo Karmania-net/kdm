@@ -85,4 +85,43 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get noDownloads => 'هنوز دانلودی وجود ندارد';
+
+  @override
+  String get searchInDownloads => 'جستجو در دانلودها...';
+
+  @override
+  String get newest => 'جدیدترین';
+
+  @override
+  String get allFiles => 'همه فایل‌ها';
+
+  @override
+  String get dragDropUrl => 'آدرس یا فایل تورنت را اینجا بکشید و رها کنید';
+
+  @override
+  String get added => 'اضافه شده';
+
+  @override
+  String get size => 'حجم';
+
+  @override
+  String get name => 'نام';
+
+  @override
+  String get status => 'وضعیت';
+
+  @override
+  String get downloadSpeed => 'دانلود';
+
+  @override
+  String get uploadSpeed => 'آپلود';
+
+  @override
+  String get enterUrlOrTorrent =>
+      'آدرس را وارد کنید یا فایل تورنت را انتخاب کنید';
+
+  @override
+  String todayAt(String time) {
+    return 'امروز $time';
+  }
 }

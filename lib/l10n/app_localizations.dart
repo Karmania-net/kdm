@@ -253,6 +253,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No downloads yet'**
   String get noDownloads;
+
+  /// No description provided for @searchInDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Search in downloads...'**
+  String get searchInDownloads;
+
+  /// No description provided for @newest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get newest;
+
+  /// No description provided for @allFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'All files'**
+  String get allFiles;
+
+  /// No description provided for @dragDropUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag-and-drop URL or torrent file'**
+  String get dragDropUrl;
+
+  /// No description provided for @added.
+  ///
+  /// In en, this message translates to:
+  /// **'Added'**
+  String get added;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @downloadSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get downloadSpeed;
+
+  /// No description provided for @uploadSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get uploadSpeed;
+
+  /// No description provided for @enterUrlOrTorrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter URL or choose torrent file'**
+  String get enterUrlOrTorrent;
+
+  /// No description provided for @todayAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Today {time}'**
+  String todayAt(String time);
 }
 
 class _AppLocalizationsDelegate
